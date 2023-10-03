@@ -1,0 +1,29 @@
+// Imports
+@import url("https://v1.fontapi.ir/css/Vazir");
+@import url("https://v1.fontapi.ir/css/Sahel");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+// Colors
+
+// Fonts
+$font-vazir: Vazir, Tahoma, sans-serif;
+$font-sahel: Sahel, Tahoma, sans-serif;
+$font-raleway: Raleway, Arial, sans-serif;
+
+@font-face {
+  font-family: Vazir;
+  src: url("../public/fonts/Vazir.eot") format("eot") url("../public/fonts/Vazir.ttf") format("ttf") url("../public/fonts/Vazir.woff") format("woff");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Sahel;
+  src: url("../public/fonts/Sahel.eot") format("eot") url("../public/fonts/Sahel.ttf") format("ttf") url("../public/fonts/Sahel.woff") format("woff");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url("../public/fonts/Raleway-Regular.ttf") format("ttf");
+  font-weight: normal;
+}
