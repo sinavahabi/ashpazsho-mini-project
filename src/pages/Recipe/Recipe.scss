@@ -1,0 +1,94 @@
+@import "../../main";
+
+.recipe {
+  width: 80%;
+  min-width: 260px;
+  min-height: 460px;
+  box-shadow: 0 0 10px rgba(16, 16, 16, 0.7);
+  margin: 5% auto 0 auto;
+  border-radius: $border-radius;
+
+  h2.recipe-title {
+    font-family: $font-sahel;
+    text-align: center;
+    padding-top: 1rem;
+    color: $color-dark;
+
+    &::before {
+      @include addIcon("\f2e7");
+      border: 3px solid $color-dark;
+      border-radius: 50%;
+      padding: .5rem;
+    }
+  }
+
+  p.recipe-text {
+    padding: 0 .5em;
+    margin: 2rem 0;
+    font-size: $font-lg;
+  }
+
+  ul.recipe-ingredients {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: $color-gray;
+    padding: 1rem;
+
+    li {
+      font-size: $font-lg;
+      font-style: italic;
+      margin-left: 1.5rem;
+
+      &::before {
+        @include addIcon("\f058");
+      }
+    }
+  }
+
+  p.recipe-cooking-time {
+    font: 600 italic $font-lg $font-sahel;
+    color: $color-purple;
+    margin-right: .5em;
+
+    &::after {
+      @include addIcon("\f017");
+      margin-right: .2em;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    ul.recipe-ingredients {
+      flex-direction: column;
+      align-items: start;
+    }
+
+    p.recipe-text {
+      font-size: $font-sm;
+    }
+
+    ul.recipe-ingredients li {
+      font-size: $font-md;
+    }
+
+    p.recipe-cooking-time {
+      font-size: $font-md;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    p.recipe-text {
+      font-size: $font-xs;
+    }
+
+    ul.recipe-ingredients li {
+      font-size: $font-sm;
+    }
+
+    p.recipe-cooking-time {
+      font-size: $font-sm;
+    }
+  }
+}

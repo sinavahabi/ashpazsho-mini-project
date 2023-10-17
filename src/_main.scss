@@ -4,11 +4,26 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
 // Colors
+$color-white: #fff;
+$color-light-gray: #ddd;
+$color-gray: #888;
+$color-black: #000;
+$color-dark: #333;
+$color-purple: #8b00f5;
 
 // Fonts
 $font-vazir: Vazir, Tahoma, sans-serif;
 $font-sahel: Sahel, Tahoma, sans-serif;
 $font-raleway: Raleway, Arial, sans-serif;
+$font-xxl: 2rem;
+$font-xl: 1.8rem;
+$font-lg: 1.5rem;
+$font-md: 1.2rem;
+$font-sm: 1rem;
+$font-xs: .8rem;
+
+// Borders radius
+$border-radius: .2em;
 
 @font-face {
   font-family: Vazir;
@@ -26,4 +41,12 @@ $font-raleway: Raleway, Arial, sans-serif;
   font-family: Raleway;
   src: url("../public/fonts/Raleway-Regular.ttf") format("ttf");
   font-weight: normal;
+}
+
+@mixin addIcon($icon) {
+  content: $icon;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-style: normal;
+  margin-left: .3em;
 }
