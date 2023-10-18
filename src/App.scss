@@ -1,0 +1,12 @@
+// Loading and error messages on API responses
+@import "main";
+
+
+
+div.loading {
+  @include message($font-sahel, $color-purple);
+}
+
+div.error {
+  @include message($font-raleway, $color-error);
+}

@@ -10,7 +10,7 @@ export default function Recipe() {
   return (
     <div className="recipe">
       {error && <div className="error">{error}</div>}
-      {loading && <div className="loading">Loading...</div>}
+      {loading && <div className="loading">درحال بارگزاری...</div>}
       {recipe && (
         <>
           <h2 className="recipe-title">{recipe.title}</h2>

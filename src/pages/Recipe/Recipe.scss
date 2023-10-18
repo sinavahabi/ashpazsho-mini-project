@@ -59,6 +59,20 @@
     }
   }
 
+  @media screen and (max-width: 992px) {
+    p.recipe-text {
+      font-size: $font-md;
+    }
+
+    ul.recipe-ingredients li {
+      font-size: $font-lg;
+    }
+
+    p.recipe-cooking-time {
+      font-size: $font-lg;
+    }
+  }
+
   @media screen and (max-width: 768px) {
     ul.recipe-ingredients {
       flex-direction: column;

@@ -1,14 +1,14 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink } from "react-router-dom"
 import "./Navbar.scss"
-import SearchBar from '../SearchBar/SearchBar'
+import SearchBar from "../SearchBar/SearchBar"
 
 export default function Navbar() {
   return (
-    <div>
+    <>
       <header>
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
-            <NavLink className="menu-items navbar-brand pe-2" to="/">آشپزشو</NavLink>
+            <NavLink className="menu-items navbar-brand m-0 pe-2" to="/">آشپزشو</NavLink>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -18,10 +18,10 @@ export default function Navbar() {
                   <NavLink className="menu-items nav-link" aria-current="page" to="/">خانه</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="menu-items nav-link" to="/">دستورپخت من</NavLink>
+                  <NavLink className="menu-items nav-link" to="/create">دستورپخت من</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="menu-items nav-link" to="/">درباره ما</NavLink>
+                  <NavLink className="menu-items nav-link" to="/about-us">درباره ما</NavLink>
                 </li>
               </ul>
               <ul className="menu-register navbar-nav flex-grow-1">
@@ -47,6 +47,6 @@ export default function Navbar() {
           </div>
         </nav>
       </header>
-    </div>
+    </>
   )
 }

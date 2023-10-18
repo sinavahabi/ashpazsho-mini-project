@@ -1,14 +1,16 @@
 // Import react packages
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 // Import components
 import Navbar from "./components/Navbar/Navbar"
 // Import pages
 import Create from "./pages/Create/Create"
 import Home from "./pages/Home/Home"
-import Login from './pages/Login/Login'
-import Recipe from './pages/Recipe/Recipe'
+import Login from "./pages/Login/Login"
+import Recipe from "./pages/Recipe/Recipe"
 import Search from "./pages/Search/Search"
-import SignUp from './pages/SignUp/SignUp'
+import SignUp from "./pages/SignUp/SignUp"
+import NotFound from "./pages/NotFound/NotFound"
+import AboutUs from "./pages/AboutUs/AboutUs"
 //Imports styles
 import "./App.scss"
 
@@ -24,6 +26,8 @@ export default function App() {
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
           <Route path='/recipes/:id' element={<Recipe />} />
+          <Route path='/about-us' element={<AboutUs />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

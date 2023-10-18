@@ -10,6 +10,7 @@ $color-gray: #888;
 $color-black: #000;
 $color-dark: #333;
 $color-purple: #8b00f5;
+$color-error: #ff0a4b;
 
 // Fonts
 $font-vazir: Vazir, Tahoma, sans-serif;
@@ -27,19 +28,19 @@ $border-radius: .2em;
 
 @font-face {
   font-family: Vazir;
-  src: url("../public/fonts/Vazir.eot") format("eot") url("../public/fonts/Vazir.ttf") format("ttf") url("../public/fonts/Vazir.woff") format("woff");
+  src: url("../src/assets/fonts/Vazir.eot") format("eot") url("../src/assets/fonts/Vazir.ttf") format("ttf") url("../src/assets/fonts/Vazir.woff") format("woff");
   font-weight: normal;
 }
 
 @font-face {
   font-family: Sahel;
-  src: url("../public/fonts/Sahel.eot") format("eot") url("../public/fonts/Sahel.ttf") format("ttf") url("../public/fonts/Sahel.woff") format("woff");
+  src: url("../src/assets/fonts/Sahel.eot") format("eot") url("../src/assets/fonts/Sahel.ttf") format("ttf") url("../src/assets/fonts/Sahel.woff") format("woff");
   font-weight: normal;
 }
 
 @font-face {
   font-family: Raleway;
-  src: url("../public/fonts/Raleway-Regular.ttf") format("ttf");
+  src: url("../src/assets/fonts/Raleway-Regular.ttf") format("ttf");
   font-weight: normal;
 }
 
@@ -49,4 +50,11 @@ $border-radius: .2em;
   font-weight: 900;
   font-style: normal;
   margin-left: .3em;
+}
+
+@mixin message($font-family, $color) {
+  text-align: center;
+  color: $color;
+  font-size: $font-lg;
+  font-family: $font-family;
 }

@@ -1,0 +1,33 @@
+@import "../../main";
+
+.not-found-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 88vh;
+  font-size: $font-lg;
+  padding: 1rem;
+
+  img.not-found-icon {
+    width: 300px;
+    height: 300px;
+    border-radius: $border-radius;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  p.not-found {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: $font-sm;
+
+    img.not-found-icon {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}

@@ -13,11 +13,11 @@ export default function Search() {
   const { data: searchedData, loading, error } = useFetch(url)
 
   return (
-    <div>
-      <h2 className="page-title">دستور پخت‌های شامل: "{query}"</h2>
-      {error && <p className="error">{error}</p>}
-      {loading && <p className="loading">Loading...</p>}
+    <>
+      <h3 className="page-title p-2">دستور پخت‌های شامل: "{query}"</h3>
+      {error && <div className="error">{error}</div>}
+      {loading && <div className="loading">درحال بارگزاری...</div>}
       {searchedData && <RecipeList recipes={searchedData} />}
-    </div>
+    </>
   )
 }

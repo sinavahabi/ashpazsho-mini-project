@@ -12,6 +12,17 @@ header nav.navbar {
   .collapse {
     font-size: $font-md;
 
+    ul.menu li.nav-item {
+      a {
+        padding: 0.75rem 0.4rem;
+      }
+
+      a.active {
+        background-color: #333;
+        color: $color-white;
+      }
+    }
+
     ul.menu-register li.nav-item .menu-items::before {
       @include addIcon('\f011');
     }
@@ -66,6 +77,10 @@ header nav.navbar {
   @media screen and (max-width: 992px) {
     .navbar-brand {
       border-left: none;
+    }
+
+    ul.menu li.nav-item a.active {
+      border-radius: $border-radius;
     }
 
     form.search-form {
