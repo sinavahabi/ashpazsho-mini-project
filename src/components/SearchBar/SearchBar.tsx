@@ -6,7 +6,7 @@ export default function SearchBar() {
   const [term, setTerm] = useState("")
   const navigate = useNavigate()
 
-  // Create a function to handle search bar submit
+  // Create a function to handle search bar submit and search navigation
   const handleSearch = (e: any): void => {
     e.preventDefault()
 

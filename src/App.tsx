@@ -1,7 +1,5 @@
 // Import react packages
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-// Import components
-import Navbar from "./components/Navbar/Navbar"
 // Import pages
 import Create from "./pages/Create/Create"
 import Home from "./pages/Home/Home"
@@ -11,14 +9,13 @@ import Search from "./pages/Search/Search"
 import SignUp from "./pages/SignUp/SignUp"
 import NotFound from "./pages/NotFound/NotFound"
 import AboutUs from "./pages/AboutUs/AboutUs"
-//Imports styles
+//Import styles
 import "./App.scss"
 
 export default function App() {
   return (
     <div id='app'>
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/create' element={<Create />} />

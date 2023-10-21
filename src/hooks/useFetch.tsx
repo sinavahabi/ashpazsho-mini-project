@@ -5,7 +5,6 @@ export default function useFetch(url: string) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-
   useEffect(() => {
     async function fetchData() {
       // Loading message before asynchronous process begins

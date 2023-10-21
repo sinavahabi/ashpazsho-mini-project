@@ -1,5 +1,17 @@
+import Navbar from "../../components/Navbar/Navbar"
+import Footer from "../../components/Footer/Footer"
+import "./AboutUs.scss"
+
 export default function AboutUs() {
   return (
-    <div>AboutUs</div>
+    <>
+      <Navbar />
+      <main>
+        <div>
+          AboutUs
+        </div>
+      </main>
+      <Footer />
+    </>
   )
 }

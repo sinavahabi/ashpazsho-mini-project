@@ -44,6 +44,7 @@ $border-radius: .2em;
   font-weight: normal;
 }
 
+// Define a mixin to handle various icons
 @mixin addIcon($icon) {
   content: $icon;
   font-family: 'Font Awesome 5 Free';
@@ -52,9 +53,25 @@ $border-radius: .2em;
   margin-left: .3em;
 }
 
+// Define a mixin to handle error and loading messages on API calls
 @mixin message($font-family, $color) {
   text-align: center;
   color: $color;
   font-size: $font-lg;
   font-family: $font-family;
+}
+
+// Define a mixin to handle responsive design for notFound page styles
+@mixin notFoundPageRes($font-size, $container-size, $img-size) {
+  font-size: $font-size;
+
+  .error-container {
+    width: $container-size;
+    height: $container-size;
+  }
+
+  img.not-found-icon {
+    width: $img-size;
+    height: $img-size;
+  }
 }

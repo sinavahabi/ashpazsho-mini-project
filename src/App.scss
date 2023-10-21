@@ -1,7 +1,9 @@
 // Loading and error messages on API responses
 @import "main";
 
-
+main {
+  min-height: 90vh;
+}
 
 div.loading {
   @include message($font-sahel, $color-purple);
@@ -9,4 +11,8 @@ div.loading {
 
 div.error {
   @include message($font-raleway, $color-error);
+}
+
+div.message {
+  @include message($font-sahel, $color-dark);
 }
