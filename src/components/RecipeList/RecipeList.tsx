@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import { useEffect, useState } from "react"
 import "./RecipeList.scss"
 
-// Interface type
+// Define an interface with exact data structure for each recipe object
 interface RecipeListProps {
   recipes: {
     id: number,

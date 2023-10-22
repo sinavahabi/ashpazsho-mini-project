@@ -11,6 +11,8 @@ $color-black: #000;
 $color-dark: #333;
 $color-purple: #8b00f5;
 $color-error: #ff0a4b;
+$color-blue: #3e75ff;
+$color-green: #1dcc87;
 
 // Fonts
 $font-vazir: Vazir, Tahoma, sans-serif;
@@ -74,4 +76,13 @@ $border-radius: .2em;
     width: $img-size;
     height: $img-size;
   }
+}
+
+// Define a mixin to handle icons positions on the form element content in sign-up page
+@mixin iconPosition($padding) {
+  position: absolute;
+  left: 1px;
+  bottom: 10px;
+  border-right: 2px solid #ddd;
+  padding: $padding;
 }

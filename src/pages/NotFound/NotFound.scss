@@ -1,7 +1,7 @@
 @import "../../main";
 
 .not-found {
-  @include notFoundPageRes($font-lg, 400px, 300px);
+  @include notFoundPageRes($font-lg, 425px, 300px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,12 +27,21 @@
     margin-bottom: 0;
   }
 
+  a.not-found-link {
+    text-decoration: none;
+    color: $color-purple;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   // Responsive styles
   @media screen and (max-width: 1200px) {
-    @include notFoundPageRes($font-md, 300px, 225px);
+    @include notFoundPageRes($font-md, 325px, 225px);
   }
 
   @media screen and (max-width: 768px) {
-    @include notFoundPageRes($font-sm, 225px, 150px);
+    @include notFoundPageRes($font-sm, 250px, 150px);
   }
 }

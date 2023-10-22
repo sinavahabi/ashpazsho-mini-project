@@ -7,7 +7,7 @@ export default function SearchBar() {
   const navigate = useNavigate()
 
   // Create a function to handle search bar submit and search navigation
-  const handleSearch = (e: any): void => {
+  const handleSearch = (e: Event | any): void => {
     e.preventDefault()
 
     navigate(`/search?q=${term}`)

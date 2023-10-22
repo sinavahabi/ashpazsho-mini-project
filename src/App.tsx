@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 // Import pages
 import Create from "./pages/Create/Create"
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import Home from "./pages/Home/Home"
 import Login from "./pages/Login/Login"
 import Recipe from "./pages/Recipe/Recipe"
@@ -22,6 +23,7 @@ export default function App() {
           <Route path='/search' element={<Search />} />
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/recipes/:id' element={<Recipe />} />
           <Route path='/about-us' element={<AboutUs />} />
           <Route path='*' element={<NotFound />} />
