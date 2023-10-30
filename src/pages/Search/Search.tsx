@@ -11,7 +11,7 @@ export default function Search() {
   const queryParams = new URLSearchParams(queryString)
   const query = queryParams.get("q")
 
-  const url = `http://localhost:8000/recipes?q=${query}`
+  const url = `http://localhost:5000/recipes?q=${query}`
   const { data: searchedData, loading, error } = useFetch(url)
 
   return (

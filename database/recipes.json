@@ -1,27 +1,4 @@
 {
-  "users": [
-    {
-      "id": 41715,
-      "name": "سینا",
-      "last-name": "وهبی ذاتی",
-      "email": "sinavahabiz8@gmail.com",
-      "password": "Sina2023"
-    },
-    {
-      "id": 6202,
-      "name": "علی",
-      "last-name": "جعفری",
-      "email": "AliJ88@gmail.com",
-      "password": "AliAli2222"
-    },
-    {
-      "id": 4577,
-      "name": "ارشیا",
-      "last-name": "جوانی",
-      "email": "arshiaj@gmail.com",
-      "password": "Arshia2020"
-    }
-  ],
   "recipes": [
     {
       "id": 1,

@@ -23,6 +23,20 @@ header nav.navbar {
       }
     }
 
+    ul.menu-register li.nav-item .log-out {
+      background-color: transparent;
+      border: none;
+      padding: 0.75rem 0.4rem;
+
+      &::before {
+        @include addIcon('\f2f6');
+      }
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+
     ul.menu-register li.nav-item .menu-items::before {
       @include addIcon('\f011');
     }

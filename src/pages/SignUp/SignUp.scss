@@ -1,72 +1,8 @@
 @import "../../main";
-
-.submit-msg {
-  width: 30%;
-  text-align: center;
-  margin: auto;
-  color: $color-white;
-  font-size: $font-md;
-  border-radius: 2rem;
-  padding: 1.5rem .6rem .6rem .6rem;
-  transition: transform .5s ease;
-
-  // Responsive styles
-  @media screen and (max-width: 1200px) {
-    font-size: $font-sm;
-  }
-
-  @media screen and (max-width: 992px) {
-    width: 40%;
-    padding: 1.2rem .4rem .4rem .4rem;
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: $font-xs;
-  }
-
-  @media screen and (max-width: 576px) {
-    width: 80%;
-    padding: 1rem .3rem .3rem .3rem;
-  }
-}
-
-.submit-success {
-  transform: translateY(-140%);
-  background-color: $color-green;
-
-  &::after {
-    @include addIcon('\f4fc');
-    margin-right: .2em;
-  }
-}
-
-.submit-email-error {
-  transform: translateY(-40%);
-  background-color: $color-error;
-
-  &::after {
-    @include addIcon('\f235');
-    margin-right: .2em;
-  }
-}
-
-// When messages are hidden
-.submit-success.hide {
-  transform: translateY(-200%);
-}
-
-.submit-email-error.hide {
-  transform: translateY(-100%);
-}
+@import "../Login/Login.scss";
 
 form.sign-up {
-  min-width: 350px;
   min-height: 450px;
-  width: 20%;
-  border: 2px solid $color-light-gray;
-  border-radius: $border-radius;
-  margin: 50px auto;
-  padding: 1rem .2em;
 
   .form-container {
     display: flex;
@@ -101,14 +37,6 @@ form.sign-up {
       }
 
       .icon-container {
-        position: relative;
-
-        i.show-hide-icon {
-          @include iconPosition(1.15rem .6rem);
-          font-size: $font-lg;
-          cursor: pointer;
-        }
-
         img.email-icon {
           @include iconPosition(1rem .4rem);
           width: 42px;
@@ -116,45 +44,12 @@ form.sign-up {
         }
       }
 
-      input {
-        width: 100%;
-        outline: none;
-        border: 2px solid $color-light-gray;
-        border-radius: $border-radius;
-        padding: 1rem .3em;
-        margin-bottom: .5rem;
-        font-size: $font-md;
-        transition: border .4s ease;
-
-        &:focus {
-          border: 2px solid $color-blue;
-        }
-      }
-
-      input#email,
-      input#password {
-        padding: 1rem 0.3em 1rem 2.9rem;
+      input#email {
+        padding: 1rem 0.3em 1rem 3rem;
       }
 
       .error-message {
         color: $color-error;
-      }
-    }
-
-    button.submit {
-      background-color: $color-blue;
-      margin: 1rem auto;
-      width: 90%;
-      outline: none;
-      border: 3px solid transparent;
-      border-radius: $border-radius;
-      padding: .6rem .4rem;
-      font-size: $font-md;
-      color: $color-white;
-      transition: all .4s linear;
-
-      .submit-loading {
-        vertical-align: middle;
       }
     }
 
@@ -181,41 +76,10 @@ form.sign-up {
         background-color: rgba($color-error, .7);
       }
     }
-
-    .navigation {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-
-      p {
-        margin-bottom: 0;
-      }
-
-      &-container {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        margin: 1rem 0;
-
-        a {
-          text-decoration: none;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
   }
 
   // Responsive styles
   @media screen and (max-width: 768px) {
-    min-width: 250px;
     min-height: 350px;
 
     .form-container {
@@ -232,11 +96,6 @@ form.sign-up {
         }
 
         .icon-container {
-          i.show-hide-icon {
-            padding: 0.6rem 0.4rem;
-            font-size: $font-sm;
-          }
-
           img.email-icon {
             padding: 0.2rem;
             width: 28px;
@@ -244,33 +103,12 @@ form.sign-up {
           }
         }
 
-        input,
-        input#email,
-        input#password {
-          font-size: $font-xs;
-        }
-
-        input {
-          padding: .5rem .2em;
-        }
-
-        input#email,
-        input#password {
-          padding: .5rem .2em .5rem 1.9rem;
+        input#email {
+          padding: .5rem .2em .5rem 2.1rem;
         }
 
         .error-message {
           font-size: $font-xs;
-        }
-      }
-
-      button.submit {
-        font-size: $font-xs;
-        padding: .3rem .2rem;
-
-        .submit-loading {
-          width: 20px;
-          height: 20px;
         }
       }
 
@@ -282,13 +120,6 @@ form.sign-up {
           i.fa-close {
             font-size: $font-sm;
           }
-        }
-      }
-
-      .navigation {
-        &-container {
-          margin: .6rem 0;
-          font-size: $font-xs;
         }
       }
     }

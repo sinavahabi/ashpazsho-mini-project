@@ -10,10 +10,14 @@ import Search from "./pages/Search/Search"
 import SignUp from "./pages/SignUp/SignUp"
 import NotFound from "./pages/NotFound/NotFound"
 import AboutUs from "./pages/AboutUs/AboutUs"
+// Import hooks
+import useAuth from "./hooks/useAuth"
 //Import styles
 import "./App.scss"
 
 export default function App() {
+  const { loggedIn } = useAuth()
+
   return (
     <div id='app'>
       <BrowserRouter>
@@ -21,8 +25,8 @@ export default function App() {
           <Route path='/' element={<Home />} />
           <Route path='/create' element={<Create />} />
           <Route path='/search' element={<Search />} />
-          <Route path='/sign-up' element={<SignUp />} />
-          <Route path='/login' element={<Login />} />
+          {loggedIn ? <Route path='/' /> : <Route path='/sign-up' element={<SignUp />} />}
+          {loggedIn ? <Route path='/' /> : <Route path='/login' element={<Login />} />}
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/recipes/:id' element={<Recipe />} />
           <Route path='/about-us' element={<AboutUs />} />

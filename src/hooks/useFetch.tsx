@@ -25,6 +25,15 @@ export default function useFetch(url: string, method: string = "GET") {
     })
   }
 
+  // Define a function for 'PUT method
+  // const updateInfo = (info: object): void => {
+  //   setOption({
+  //     method: 'PUT',
+  //     headers: { 'content-type': 'application/json' },
+  //     body: JSON.stringify(info)
+  //   })
+  // }
+ 
   useEffect(() => {
     async function fetchData(url: string, fetchOptions: object = {}) {
       // Show loading message
@@ -58,6 +67,10 @@ export default function useFetch(url: string, method: string = "GET") {
     }
 
     if (method === "POST" && options) {
+      fetchData(url, options)
+    }
+
+    if (method === "PUT" && options) {
       fetchData(url, options)
     }
   }, [url, method, options])

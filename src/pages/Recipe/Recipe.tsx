@@ -6,7 +6,7 @@ import "./Recipe.scss"
 
 export default function Recipe() {
   const { id } = useParams()
-  const url: string = `http://localhost:8000/recipes/${id}`
+  const url: string = `http://localhost:5000/recipes/${id}`
   const { data: recipe, loading, error }: any = useFetch(url)
 
   return (

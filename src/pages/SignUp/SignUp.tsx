@@ -4,6 +4,7 @@ import useFetch from "../../hooks/useFetch"
 import "./SignUp.scss"
 import mailIcon from "../../assets/icons/mail.svg"
 
+// Define an interface with exact data structure for each user object
 interface usersInformation {
   "id": number,
   "name": string,
@@ -27,11 +28,11 @@ export default function SignUp() {
 
   // Use "useState" hook to show success and unsuccess submit messages
   const [success, setSuccess] = useState(false)
-  const [notSuccess, setNotSuccess] = useState(false)
+  const [unsuccess, setUnsuccess] = useState(false)
 
   // Use "useFetch" custom hook to handle API requests
-  const { data, loading: userLoading, error: userError } = useFetch("http://localhost:8000/users")
-  const { loading, error, saveInfo } = useFetch("http://localhost:8000/users", "POST")
+  const { data, loading: userLoading, error: userError } = useFetch("http://localhost:5001/users")
+  const { loading, error, saveInfo } = useFetch("http://localhost:5001/users", "POST")
 
   // Use userInformation interface as placeholder type 
   let userData: null | usersInformation[]
@@ -149,7 +150,7 @@ export default function SignUp() {
     const id: number = Math.floor(Math.random() * 100000)
 
     // Access to submit bUtton with DOM navigation 
-    const submitBtn = e.target.childNodes[0].childNodes[4]
+    const submitBtn: HTMLButtonElement = e.target.childNodes[0].childNodes[4]
 
     // When form validation is confirmed
     if (e.target.checkValidity()) {
@@ -158,10 +159,10 @@ export default function SignUp() {
         successSubmit(submitBtn, id, e)
       } else {
         // Check if email is not already registered
-        const isEmailValid = userData && userData.some(item => item.email === emailValue);
+        const isEmailValid = userData && userData.some(item => item.email === emailValue)
 
         if (isEmailValid) {
-          setNotSuccess(true);
+          setUnsuccess(true);
           return "ایمیل قبلا ثبت شده است";
         } else {
           // All good, submit will occur successfully
@@ -180,7 +181,7 @@ export default function SignUp() {
     btnElem.style.opacity = ".6"
 
     // Modify success and unsuccess states
-    setNotSuccess(false)
+    setUnsuccess(false)
     setSuccess(true)
 
     // Call post method function and pass desired user data to JSON server
@@ -198,11 +199,11 @@ export default function SignUp() {
 
   return (
     <div className="sign-up">
-      <div className={notSuccess ? "submit-msg submit-email-error" : "submit-msg submit-email-error hide"}>این ایمیل قبلا ثبت شده است!</div>
+      <div className={unsuccess ? "submit-msg submit-msg-error" : "submit-msg submit-msg-error hide"}>این ایمیل قبلا ثبت شده است!</div>
       <div className={success ? "submit-msg submit-success" : "submit-msg submit-success hide"}>ثبت نام شما با موفقیت انجام شد</div>
-      <form action="login" className="sign-up" onSubmit={formSubmit}>
+      <form action="login" className="sign-up register-account" onSubmit={formSubmit}>
         <div className="form-container">
-          {(error || userError) && <div className="submit-err">خطایی رخ داده است! ممکن است درحال حاضر امکان ثبت نام شما وجود نداشته باشد.</div>}
+          {(error || userError) && <div className="submit-err">خطایی رخ داده است! ممکن است درحال حاضر امکان ثبت اطلاعات شما وجود نداشته باشد.</div>}
           <div className="form-item name">
             <div className="label-container name-container">
               <label htmlFor="name">نام</label>

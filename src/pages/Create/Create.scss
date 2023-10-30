@@ -1,0 +1,34 @@
+@import "../../main";
+
+.not-logged-in-container {
+  font-size: $font-lg;
+  margin-top: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  .not-logged-in {
+    text-align: center;
+    color: $color-alert;
+    margin-bottom: 2rem;
+  }
+
+  .login-page {
+    text-decoration: none;
+    color: $color-purple;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: $font-sm;
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: $font-xs;
+  }
+}

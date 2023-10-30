@@ -1,8 +1,16 @@
 import { NavLink } from "react-router-dom"
 import SearchBar from "../SearchBar/SearchBar"
+import useAuth from "../../hooks/useAuth"
 import "./Navbar.scss"
 
 export default function Navbar() {
+  const { loggedIn } = useAuth()
+
+  const logoutHandler = () => {
+    localStorage.setItem("logged-in", JSON.stringify(false))
+    window.location.reload()
+  }
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -24,7 +32,9 @@ export default function Navbar() {
               </li>
             </ul>
             <ul className="menu-register navbar-nav flex-grow-1">
-              <li className="nav-item dropdown">
+              {loggedIn ? <li className="nav-item">
+                <button type="button" className="log-out" onClick={logoutHandler}>خروج</button>
+              </li> : <li className="nav-item dropdown">
                 <NavLink className="menu-items nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   ورود | ثبت نام
                 </NavLink>
@@ -39,7 +49,7 @@ export default function Navbar() {
                     <NavLink className="login-link dropdown-menu-items dropdown-item" to="/login">ورود</NavLink>
                   </li>
                 </ul>
-              </li>
+              </li>}
             </ul>
             <SearchBar />
           </div>

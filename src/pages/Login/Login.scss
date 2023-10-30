@@ -1,0 +1,280 @@
+@import "../../main";
+
+.submit-msg {
+  width: 30%;
+  text-align: center;
+  margin: auto;
+  color: $color-white;
+  font-size: $font-md;
+  border-radius: 2rem;
+  padding: 1.5rem .6rem .6rem .6rem;
+  transition: transform .5s ease;
+
+  // Responsive styles
+  @media screen and (max-width: 1200px) {
+    font-size: $font-sm;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 40%;
+    padding: 1.2rem .4rem .4rem .4rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: $font-xs;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 80%;
+    padding: 1rem .3rem .3rem .3rem;
+  }
+}
+
+.submit-success {
+  transform: translateY(-140%);
+  background-color: $color-green;
+
+  &::after {
+    @include addIcon('\f058');
+    margin-right: .2em;
+  }
+}
+
+.submit-msg-error {
+  transform: translateY(-40%);
+  background-color: $color-error;
+
+  &::after {
+    @include addIcon('\f071');
+    margin-right: .2em;
+  }
+}
+
+// When messages are hidden
+.submit-success.hide {
+  transform: translateY(-200%);
+}
+
+.submit-msg-error.hide {
+  transform: translateY(-100%);
+}
+
+.error-info {
+  opacity: 1;
+  width: 100%;
+  margin: auto;
+  color: $color-error;
+  font-size: $font-lg;
+  text-align: center;
+  transition: opacity .8s ease-out;
+
+  @media screen and (max-width: 768px) {
+    font-size: $font-md;
+  }
+}
+
+.error-info.hide {
+  opacity: 0;
+}
+
+form.register-account {
+  min-width: 350px;
+  min-height: 250px;
+  width: 20%;
+  border: 2px solid $color-light-gray;
+  border-radius: $border-radius;
+  margin: 50px auto;
+  padding: 1rem .2em;
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .form-item {
+      margin: .5rem auto;
+      width: 90%;
+
+      .icon-container {
+        position: relative;
+
+        i.show-hide-icon {
+          @include iconPosition(1.15rem .6rem);
+          font-size: $font-lg;
+          cursor: pointer;
+        }
+      }
+
+      input {
+        width: 100%;
+        outline: none;
+        border: 2px solid $color-light-gray;
+        border-radius: $border-radius;
+        padding: 1rem .3em;
+        margin-bottom: .5rem;
+        font-size: $font-md;
+        transition: border .4s ease;
+
+        &:focus {
+          border: 2px solid $color-blue;
+        }
+      }
+
+      input#email::placeholder {
+        text-align: right;
+      }
+
+      input#password {
+        padding: 1rem .3em 1rem 3rem;
+        direction: ltr;
+
+        &::placeholder {
+          text-align: right;
+        }
+      }
+
+      [data-login-pass] {
+        padding: 1rem .3em 1rem 3.4rem !important;
+      }
+    }
+
+    button.submit {
+      background-color: $color-blue;
+      margin: 1rem auto;
+      width: 90%;
+      outline: none;
+      border: 3px solid transparent;
+      border-radius: $border-radius;
+      padding: .6rem .4rem;
+      font-size: $font-md;
+      color: $color-white;
+      transition: all .4s linear;
+
+      &:hover {
+        background-color: adjust-color($color-blue , $saturation: 0%, $lightness: -20%, $alpha: 1.0);
+      }
+
+      .submit-loading {
+        vertical-align: middle;
+      }
+    }
+
+    .navigation {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      &-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 1rem 0;
+
+        a {
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    min-width: 250px;
+    min-height: 150px;
+
+    .form-container {
+      .form-item {
+        .icon-container {
+          i.show-hide-icon {
+            padding: .6rem .4rem;
+            font-size: $font-sm;
+          }
+        }
+
+        input,
+        input#email,
+        input#password {
+          font-size: $font-xs;
+        }
+
+        input {
+          padding: .5rem .2em;
+        }
+
+        input#password {
+          padding: .5rem .2em .5rem 2.1rem;
+        }
+
+        [data-login-pass] {
+          padding: .5rem .2em .5rem 2.2rem !important;
+        }
+      }
+
+      button.submit {
+        font-size: $font-xs;
+        padding: .3rem .2rem;
+
+        .submit-loading {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .navigation {
+        &-container {
+          margin: .6rem 0;
+          font-size: $font-xs;
+        }
+      }
+    }
+  }
+}
+
+.login-fetch-error {
+  width: 20%;
+  font-size: $font-md;
+  background-color: $color-error;
+  color: $color-white;
+  text-align: center;
+  padding: .4rem;
+  border-radius: $border-radius;
+  transform: translateX(-5%);
+  transition: transform .5s ease-in-out;
+
+  @media screen and (max-width: 1200px) {
+    width: 25%;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 30%;
+    font-size: $font-sm;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 40%;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 50%;
+    font-size: $font-xs;
+  }
+}
+
+// When error message is hidden
+.login-fetch-error.hide {
+  transform: translateX(105%);
+}

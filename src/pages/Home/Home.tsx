@@ -5,7 +5,7 @@ import useFetch from "../../hooks/useFetch"
 import "./Home.scss"
 
 export default function Home() {
-  const { data, loading, error } = useFetch("http://localhost:8000/recipes")
+  const { data, loading, error } = useFetch("http://localhost:5000/recipes")
 
   return (
     <>
