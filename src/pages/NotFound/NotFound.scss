@@ -2,10 +2,7 @@
 
 .not-found {
   @include notFoundPageRes($font-lg, 425px, 300px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  @include flexboxStyle(center, center);
   flex-direction: column;
   height: 100vh;
   padding: 1rem;

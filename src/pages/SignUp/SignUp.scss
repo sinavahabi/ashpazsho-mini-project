@@ -5,11 +5,8 @@ form.sign-up {
   min-height: 450px;
 
   .form-container {
-    display: flex;
+    @include flexboxStyle(center, center);
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
 
     .submit-err {
       width: 90%;

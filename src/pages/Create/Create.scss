@@ -1,12 +1,10 @@
 @import "../../main";
 
+// When not logged in 
 .not-logged-in-container {
   font-size: $font-lg;
   margin-top: 30vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  @include flexboxStyle(center, center);
   flex-direction: column;
 
   .not-logged-in {
@@ -30,5 +28,293 @@
 
   @media screen and (max-width: 576px) {
     font-size: $font-xs;
+  }
+}
+
+// When logged in 
+.create-recipe {
+  margin-top: 100px;
+
+  .recipe-submit-err {
+    color: red;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: $font-sm;
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: $font-xs;
+    }
+  }
+
+  .recipe-submit-err.top {
+    position: absolute;
+    top: 80px;
+    font-family: $font-raleway;
+  }
+
+  .form-container {
+    font-size: $font-lg;
+    @include flexboxStyle(space-evenly, center);
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(16, 16, 16, 0.586);
+    border-radius: $border-radius + .5em;
+    width: 40%;
+    min-width: 750px;
+    min-height: 700px;
+    margin: auto;
+    padding: .5rem;
+
+    h2.add-recipe-header {
+      font-family: $font-sahel;
+
+      &::after {
+        @include addIcon('\f7ec');
+        margin-right: .3em;
+      }
+    }
+
+    .form-item {
+      width: 100%;
+      @include flexboxStyle(space-between, center);
+
+      input,
+      textarea {
+        width: 80%;
+        margin-left: .7rem;
+        margin-bottom: .5rem;
+        padding: .4rem .3rem;
+        border: 2px solid $color-dark;
+        border-radius: $border-radius;
+        outline: none;
+        transition: border .4s;
+
+        &:focus {
+          border: 2px solid $color-purple;
+        }
+      }
+
+      .validity-message {
+        width: 100%;
+        font-size: $font-md;
+        color: $color-error;
+        text-align: center;
+        margin-bottom: .3em;
+      }
+
+      input#ingredients-input {
+        width: 55.5%;
+        margin-left: .5rem;
+      }
+
+      button.add-ingredients {
+        margin-left: .7rem;
+        margin-bottom: .5rem;
+        background-color: $color-green;
+        color: $color-white;
+
+        &:hover {
+          opacity: .7;
+        }
+
+        &:active {
+          background-color: transparent;
+          color: $color-green;
+          border: 2px solid $color-green;
+        }
+
+        &::after {
+          @include addIcon('\f067');
+          margin: 0 .2rem;
+        }
+      }
+
+      .show-ingredients {
+        width: 80%;
+        margin-bottom: 0.5rem;
+        border: 2px solid $color-light-gray;
+        padding: 0.2rem;
+        margin-right: 18%;
+        border-radius: $border-radius;
+
+        &-item {
+          font: italic $font-md $font-sahel;
+        }
+      }
+
+      textarea {
+        height: 200px;
+        resize: none;
+      }
+
+      label {
+        margin-right: .7rem;
+      }
+
+      label.ingredients-label {
+        flex-grow: 1;
+      }
+    }
+
+    button {
+      border-radius: $border-radius;
+      border: 2px solid transparent;
+      padding: .4rem 1rem;
+    }
+
+    button.add-recipe {
+      background-color: $color-purple;
+      color: $color-white;
+      width: 30%;
+
+      .submit-loading {
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+      }
+
+      &:hover {
+        background-color: $color-blue;
+      }
+
+      &:active {
+        color: $color-purple;
+        background-color: transparent;
+        border: 2px solid $color-purple;
+      }
+
+      transition: background-color .5s ease;
+    }
+
+    // Responsive styles
+    @media screen and (max-width: 768px) {
+      font-size: $font-sm;
+      min-width: 280px;
+      min-height: 450px;
+      width: 90%;
+
+      h2.add-recipe-header {
+        font-size: $font-lg;
+      }
+
+      .form-item {
+        .validity-message {
+          font-size: $font-sm;
+        }
+
+        .show-ingredients {
+          &-item {
+            font-size: $font-sm;
+          }
+        }
+      }
+
+      .ingredients-form-item {
+        input#ingredients-input {
+          width: 51.5%;
+        }
+
+        label.ingredients-label {
+          flex-grow: 0;
+          width: 15%;
+        }
+
+        button.add-ingredients {
+          width: 26%;
+        }
+      }
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: $font-xs;
+
+      h2.add-recipe-header {
+        font-size: $font-md;
+      }
+
+      button.add-recipe {
+        width: 80%;
+        margin-left: .7rem;
+      }
+
+      .form-item {
+        @include flexboxStyle(space-evenly, center, column);
+
+        .validity-message {
+          font-size: $font-xs;
+        }
+
+        .show-ingredients {
+          margin-right: -2%;
+
+          &-item {
+            font-size: $font-xs;
+          }
+        }
+      }
+
+      .ingredients-form-item {
+        input#ingredients-input {
+          width: 80%;
+        }
+
+        label.ingredients-label {
+          width: 80%;
+          text-align: center;
+        }
+
+        button.add-ingredients {
+          width: 80%;
+        }
+      }
+    }
+  }
+
+  .msg {
+    color: $color-white;
+    font-size: $font-md;
+    text-align: center;
+    padding: 0.4rem;
+    border-radius: 0.2em;
+    width: 20%;
+    min-width: 340px;
+    opacity: 0;
+    transition: opacity .5s ease;
+    margin-top: 1rem;
+    cursor: default;
+
+    @media screen and (max-width: 768px) {
+      font-size: $font-sm;
+      min-width: 300px;
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: $font-xs;
+      min-width: 200px;
+    }
+  }
+
+  .msg.show {
+    opacity: 1;
+  }
+
+  .invalid-recipe-form-msg {
+    background-color: $color-error;
+    float: left;
+    margin-left: 1.5rem;
+  }
+
+  .valid-recipe-form-msg {
+    background-color: $color-green;
+    float: right;
+    margin-right: 1.5rem;
+  }
+
+  .clearfix {
+    clear: both;
   }
 }

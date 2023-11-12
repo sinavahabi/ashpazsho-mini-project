@@ -87,11 +87,8 @@ form.register-account {
   padding: 1rem .2em;
 
   .form-container {
-    display: flex;
+    @include flexboxStyle(center, center);
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
 
     .form-item {
       margin: .5rem auto;
@@ -163,18 +160,12 @@ form.register-account {
 
     .navigation {
       width: 100%;
-      display: flex;
+      @include flexboxStyle(center, center);
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
 
       &-container {
         width: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
+        @include flexboxStyle(space-around, center);
         margin: 1rem 0;
 
         a {

@@ -7,10 +7,7 @@ footer {
   .footer {
     position: sticky;
     bottom: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    @include flexboxStyle(space-between, center);
     background-color: $color-light-gray;
     min-height: 100px;
     color: $color-black;

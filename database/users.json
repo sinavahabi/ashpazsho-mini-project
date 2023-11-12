@@ -1,11 +1,18 @@
 {
-  "users": [
-    {
-      "id": 69946,
-      "name": "سینا",
-      "last-name": "وهبی",
-      "email": "sinavahabi@gmail.com",
-      "password": "Sina2020"
-    }
-  ]
+    "users": [
+        {
+            "id": 69946,
+            "name": "سینا",
+            "last-name": "وهبی",
+            "email": "sinavahabi@gmail.com",
+            "password": "Sina2020"
+        },
+        {
+            "id": 35324,
+            "name": "سینا",
+            "last-name": "جوانی",
+            "email": "Ali@gmail.com",
+            "password": "123456789aaA"
+        }
+    ]
 }

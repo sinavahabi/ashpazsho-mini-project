@@ -21,7 +21,7 @@ export default function Recipe() {
               <h2 className="recipe-title">{recipe.title}</h2>
               <p className="recipe-text">{recipe.recipe}</p>
               <ul className="recipe-ingredients">
-                {recipe.ingredients.map((ingredient: string) => <li key={ingredient}>{ingredient}</li>)}
+                {recipe.ingredients.length > 0 ? recipe.ingredients.map((ingredient: string) => <li key={ingredient}>{ingredient}</li>) : <li>مواد لازم برای این دستور پخت درنظر گرفته نشده است!</li>}
               </ul>
               <p className="recipe-cooking-time">{`${recipe.cookingTime} دقیقه زمان می‌برد`}</p>
             </>

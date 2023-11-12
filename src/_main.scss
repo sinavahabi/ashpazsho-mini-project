@@ -47,6 +47,15 @@ $border-radius: .2em;
   font-weight: normal;
 }
 
+// Define a mixin to add flexbox styles
+@mixin flexboxStyle($justify-content-value, $align-items-value, $flex-direction: row) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $justify-content-value;
+  align-items: $align-items-value;
+  flex-direction: $flex-direction;
+}
+
 // Define a mixin to handle various icons
 @mixin addIcon($icon) {
   content: $icon;

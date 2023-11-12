@@ -22,10 +22,7 @@
   }
 
   .card-footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    @include flexboxStyle(space-between, center);
     padding: 1rem;
     font-size: $font-md;
 

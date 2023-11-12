@@ -9,6 +9,14 @@ interface infoObject {
   "password": string
 }
 
+type savedRecipe = {
+  id: number,
+  title: string,
+  ingredients: string[],
+  recipe: string,
+  cookingTime: number
+}
+
 export default function useFetch(url: string, method: string = "GET") {
   // Define "useState" hook values
   const [data, setData] = useState(null)
@@ -17,7 +25,7 @@ export default function useFetch(url: string, method: string = "GET") {
   const [options, setOption] = useState({})
 
   // Define a function for 'POST' method
-  const saveInfo = (info: infoObject): void => {
+  const saveInfo = (info: infoObject | savedRecipe): void => {
     setOption({
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -25,7 +33,7 @@ export default function useFetch(url: string, method: string = "GET") {
     })
   }
 
-  // Define a function for 'PUT method
+  // Define a function for 'PUT' method
   // const updateInfo = (info: object): void => {
   //   setOption({
   //     method: 'PUT',
@@ -61,7 +69,7 @@ export default function useFetch(url: string, method: string = "GET") {
       }
     }
 
-    // Check if "useFetch" custom hook is called on 'POST' method or 'GET' method
+    // Check if "useFetch" custom hook is called on 'POST', 'PUT or 'GET' method
     if (method === "GET") {
       fetchData(url)
     }
