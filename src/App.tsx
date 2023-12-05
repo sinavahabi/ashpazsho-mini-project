@@ -1,7 +1,7 @@
 // Import react packages
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 // Import pages
-import Create from "./pages/Create/Create"
+import MyProfile from "./pages/MyProfile/MyProfile"
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import Home from "./pages/Home/Home"
 import Login from "./pages/Login/Login"
@@ -23,12 +23,12 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/create' element={<Create />} />
+          <Route path='/my-profile' element={<MyProfile />} />
           <Route path='/search' element={<Search />} />
           {loggedIn ? <Route path='/' /> : <Route path='/sign-up' element={<SignUp />} />}
           {loggedIn ? <Route path='/' /> : <Route path='/login' element={<Login />} />}
           <Route path='/forgot-password' element={<ForgotPassword />} />
-          <Route path='/recipes/:id' element={<Recipe />} />
+          <Route path='/recipes/:recipeId' element={<Recipe />} />
           <Route path='/about-us' element={<AboutUs />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

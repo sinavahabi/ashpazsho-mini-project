@@ -6,7 +6,7 @@ import dateIcon from "../../assets/icons/date.svg"
 export default function Footer() {
   const jalali = JalaliDateTime()
   // Add some configuration to make sure date is returned with persian font 
-  const persianDate = jalali.now({
+  const persianDate: string = jalali.now({
     timezone: 'Asia/Tehran',
     locale: 'fa',
     format: 'Y-M-D H:I',

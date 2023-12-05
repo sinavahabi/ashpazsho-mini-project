@@ -1,62 +1,82 @@
-import { useState } from "react"
+import { useState, useEffect, useRef, MouseEvent, ChangeEvent } from "react"
 import { NavLink } from "react-router-dom"
 import useFetch from "../../hooks/useFetch"
 import "./Login.scss"
 
 // Define an interface with exact data structure for each user object
 interface usersInformation {
-  "id": number,
-  "name": string,
+  id: number,
+  name: string,
   "last-name": string,
-  "email": string,
-  "password": string,
-  "logged-in": boolean
+  email: string,
+  password: string,
+  "logged-in": boolean,
+  recipes: savedRecipe[]
+}
+
+// Define a type alias with exact data structure for each recipe object
+type savedRecipe = {
+  id: number,
+  title: string,
+  ingredients: string[],
+  recipe: string,
+  cookingTime: number
 }
 
 export default function Login() {
   // Use "useState" hook to store input values
-  const [emailValue, setEmailValue] = useState("")
-  const [passwordValue, setPasswordValue] = useState("")
-  // const [idValue, setIdValue] = useState<number | null>(null)
+  const [emailValue, setEmailValue] = useState<string>("")
+  const [passwordValue, setPasswordValue] = useState<string>("")
+  const [idValue, setIdValue] = useState<number | null>(null)
 
   // Use "useState" hook to show success and unsuccess submit messages
-  const [success, setSuccess] = useState(false)
-  const [unsuccess, setUnsuccess] = useState(false)
+  const [success, setSuccess] = useState<boolean>(false)
+  const [unsuccess, setUnsuccess] = useState<boolean>(false)
+  const [loggedUserStatus, setLoggedUserStatus] = useState<boolean>(false)
+  const [loggedUserId, setLoggedUserId] = useState<number>(0)
+
+  // Use "useRef" to submit the form accurately
+  const formRef = useRef<HTMLFormElement>(null)
 
   // Use "useFetch" custom hook to handle API requests
   const { data, loading, error } = useFetch("http://localhost:5001/users")
-  // const { updateInfo } = useFetch(idValue ? `http://localhost:5001/users/${idValue}` : "", "PUT")
+  const { updateInfo } = useFetch(idValue ? `http://localhost:5001/users/${idValue}` : "", "PUT")
 
   // Use userInformation interface as placeholder type 
-  let userData: null | usersInformation[]
-  if (Array.isArray(data) || data === null) {
+  let userData: usersInformation[]
+  if (Array.isArray(data)) {
     userData = data
   }
 
   // Create a function to show/hide password values 
-  const showPassword = (e: Event | any): void => {
-    const inputElem = e.target.parentElement.previousSibling
+  const showPassword = (e: MouseEvent<HTMLElement>): void => {
+    const inputElem = e.currentTarget.parentElement?.previousSibling as HTMLInputElement
 
-    if (inputElem.type === "password" && e.target.className === "far fa-eye show-hide-icon") {
+    if (inputElem.type === "password" && e.currentTarget.className === "far fa-eye show-hide-icon") {
       inputElem.type = "text"
-      e.target.className = "far fa-eye-slash show-hide-icon"
+      e.currentTarget.className = "far fa-eye-slash show-hide-icon"
     } else {
       inputElem.type = "password"
-      e.target.className = "far fa-eye show-hide-icon"
+      e.currentTarget.className = "far fa-eye show-hide-icon"
     }
   }
 
   // Create a function to save input values
-  const inputHandler = (e: Event | any) => e.target.id === "email" ? setEmailValue(e.target.value) : setPasswordValue(e.target.value)
+  const inputHandler = (e: ChangeEvent<HTMLInputElement>) => e.target.id === "email" ? setEmailValue(e.target.value) : setPasswordValue(e.target.value)
+
+  useEffect(() => {
+    // This effect runs whenever loggedUser changes
+    localStorage.setItem("loggedUserStatus", JSON.stringify(loggedUserStatus))
+    localStorage.setItem("loggedUserId", JSON.stringify(loggedUserId))
+  }, [loggedUserStatus, loggedUserId])
 
   // Create a function to handle form submission
-  const formSubmit = (e: Event | any) => {
+  const formSubmit = (e: MouseEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const submitBtn: HTMLButtonElement = e.target.childNodes[0].childNodes[2]
+    const submitBtn = e.currentTarget.childNodes[0].childNodes[2] as HTMLButtonElement
 
     if (userData && userData.length !== 0) {
-      // const validData: boolean = userData.some(item => item.email === emailValue && item.password === passwordValue)
       const user = userData.find(item => item.email === emailValue && item.password === passwordValue)
 
       if (user) {
@@ -64,16 +84,18 @@ export default function Login() {
         submitBtn.style.cursor = "not-allowed"
         submitBtn.style.opacity = ".6"
 
-        // setIdValue(user.id)
-        // updateInfo({ ...user, "logged-in": true })
-        
-        // Set the cookies
-        localStorage.setItem("logged-in", JSON.stringify(true))
+        setIdValue(user.id)
+        updateInfo({ ...user, "logged-in": true })
+
+        // Set the local storage value later on with "useEffect" hook
+        setLoggedUserStatus(true)
+        setLoggedUserId(user.id)
 
         setSuccess(true)
         setUnsuccess(false)
+
         // Redirect to login page after one second delay in successful submission
-        setTimeout(() => e.target.submit(), 1000)
+        setTimeout(() => formRef.current?.submit(), 1000)
       } else {
         setSuccess(false)
         setUnsuccess(true)
@@ -89,7 +111,7 @@ export default function Login() {
       <div className={unsuccess ? "submit-msg submit-msg-error" : "submit-msg submit-msg-error hide"}>ایمیل یا رمز وارد شده صحیح نمی‌باشد!</div>
       <div className={success ? "submit-msg submit-success" : "submit-msg submit-success hide"}>ورود با موفقیت انجام شد</div>
       <div className={error ? "error-info" : "error-info hide"}>خطایی رخ داده است!</div>
-      <form action="/" className="login register-account" onSubmit={formSubmit}>
+      <form action="/" ref={formRef} className="login register-account" onSubmit={formSubmit}>
         <div className="form-container">
           <div className="form-item email">
             <input placeholder="ایمیل" type="email" required id="email" onChange={inputHandler} />

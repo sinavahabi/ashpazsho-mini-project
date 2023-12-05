@@ -1,13 +1,14 @@
+import { MouseEvent } from 'react'
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./SearchBar.scss"
 
 export default function SearchBar() {
-  const [term, setTerm] = useState("")
+  const [term, setTerm] = useState<string>("")
   const navigate = useNavigate()
 
   // Create a function to handle search bar submit and search navigation
-  const handleSearch = (e: Event | any): void => {
+  const handleSearch = (e: MouseEvent<HTMLFormElement>): void => {
     e.preventDefault()
 
     navigate(`/search?q=${term}`)

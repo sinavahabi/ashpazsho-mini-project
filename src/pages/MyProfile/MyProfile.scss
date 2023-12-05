@@ -32,6 +32,35 @@
 }
 
 // When logged in 
+.buttons-container {
+  @include flexboxStyle(center, center);
+
+  .create-recipe-page-btn {
+    font-size: $font-lg;
+    border: 2px groove $color-purple;
+    color: $color-purple;
+    background-color: transparent;
+    padding: 1rem;
+    margin: 5% 1% 0 1%;
+    border-radius: $border-radius + .1em;
+    transition: .4s all ease-in-out;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-purple;
+      border: 2px groove transparent;
+    }
+
+    @media screen and (max-width: 992px) {
+      font-size: $font-md;
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: $font-xs;
+    }
+  }
+}
+
 .create-recipe {
   margin-top: 100px;
 

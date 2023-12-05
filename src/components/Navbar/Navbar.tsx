@@ -1,14 +1,50 @@
 import { NavLink } from "react-router-dom"
 import SearchBar from "../SearchBar/SearchBar"
 import useAuth from "../../hooks/useAuth"
+import useFetch from "../../hooks/useFetch"
 import "./Navbar.scss"
 
-export default function Navbar() {
-  const { loggedIn } = useAuth()
+// Define an interface with exact data structure for each user object
+interface usersInformation {
+  id: number,
+  name: string,
+  "last-name": string,
+  email: string,
+  password: string,
+  "logged-in": boolean,
+  recipes: savedRecipe[]
+}
 
-  const logoutHandler = () => {
-    localStorage.setItem("logged-in", JSON.stringify(false))
-    window.location.reload()
+// Define a type alias with exact data structure for each recipe object
+type savedRecipe = {
+  id: number,
+  title: string,
+  ingredients: string[],
+  recipe: string,
+  cookingTime: number
+}
+
+export default function Navbar() {
+  const { loggedIn, loggedInId } = useAuth()
+  const { data } = useFetch("http://localhost:5001/users")
+  const { updateInfo } = useFetch(loggedInId ? `http://localhost:5001/users/${loggedInId}` : "", "PUT")
+
+  // Use userInformation interface as placeholder type 
+  let userData: usersInformation[]
+  if (Array.isArray(data)) {
+    userData = data
+  }
+
+  const logoutHandler = (): void => {
+    if (userData && userData.length !== 0) {
+      const user = userData.find(item => item.id === loggedInId)
+      if (user) {
+        localStorage.setItem("loggedUserStatus", JSON.stringify(false))
+        updateInfo({ ...user, "logged-in": false })
+        localStorage.clear()
+        window.location.reload()
+      }
+    }
   }
 
   return (
@@ -25,7 +61,7 @@ export default function Navbar() {
                 <NavLink className="menu-items nav-link" aria-current="page" to="/">خانه</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="menu-items nav-link" to="/create">دستورپخت من</NavLink>
+                <NavLink className="menu-items nav-link" to="/my-profile">حساب کاربری</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="menu-items nav-link" to="/about-us">درباره ما</NavLink>

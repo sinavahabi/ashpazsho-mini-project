@@ -11,6 +11,18 @@
     transform: translateY(10%);
   }
 
+  .user-family {
+    padding: .4rem;
+    margin-bottom: 0;
+    background-color: $color-purple;
+    color: $color-white;
+
+    .recipe-profile {
+      font-size: $font-xl;
+      margin: .3rem 0 0 .4rem;
+    }
+  }
+
   .card-title {
     font: bold $font-xl $font-sahel;
     background-color: $color-light-gray;

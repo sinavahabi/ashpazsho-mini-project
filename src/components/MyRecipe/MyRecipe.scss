@@ -1,0 +1,125 @@
+@import "../../main";
+
+.my-recipes {
+  &-card {
+    min-width: 200px;
+    min-height: 200px;
+    box-shadow: 0 0 10px rgba(16, 16, 16, 0.7);
+    border-radius: $border-radius + .5;
+
+    &-title {
+      padding: .5rem;
+      border-bottom: thick solid $color-dark;
+      background-color: $color-light-gray;
+
+      .recipe-icon {
+        width: 35px;
+        margin-right: .3rem;
+      }
+    }
+
+    &-ingredients {
+      font-size: $font-md;
+      font-weight: bolder;
+      list-style-type: none;
+      padding: 0;
+      margin: 1rem 0 1rem 0;
+
+      &-item {
+        font-size: $font-sm;
+        padding-right: .5rem;
+
+        &::before {
+          @include addIcon('\f053');
+        }
+      }
+    }
+
+    &-description {
+      font-size: $font-md;
+    }
+
+    &-cook-time {
+      font-size: $font-lg;
+      color: $color-white;
+      background-color: $color-purple;
+
+      &::before {
+        @include addIcon('\f4fd');
+      }
+    }
+  }
+}
+
+// Responsive styles 
+@media screen and (max-width: 992px) {
+  .my-recipes {
+    &-card {
+      &-title {
+        font-size: $font-md;
+
+        .recipe-icon {
+          width: 20px;
+        }
+      }
+
+      &-ingredients {
+        font-size: $font-sm;
+
+        &-item {
+          font-size: $font-xs;
+        }
+      }
+
+      .desc-flex {
+        flex-direction: column;
+      }
+
+      .h3-label {
+        font-size: $font-md;
+      }
+
+      &-description {
+        font-size: $font-sm;
+      }
+
+      &-cook-time {
+        font-size: $font-md;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .my-recipes {
+    &-card {
+      &-title {
+        font-size: $font-sm;
+
+        .recipe-icon {
+          width: 15px;
+        }
+      }
+
+      &-ingredients {
+        font-size: $font-xs;
+      }
+
+      .desc-flex {
+        flex-direction: column;
+      }
+
+      .h3-label {
+        font-size: $font-sm;
+      }
+
+      &-description {
+        font-size: $font-xs;
+      }
+
+      &-cook-time {
+        font-size: $font-sm;
+      }
+    }
+  }
+}

@@ -2,27 +2,36 @@ import { useState, useEffect } from "react"
 
 // Define an interface with exact data structure for each user object
 interface infoObject {
-  "id": number,
-  "name": string,
+  id: number,
+  name: string,
   "last-name": string,
-  "email": string,
-  "password": string
+  email: string,
+  password: string,
+  "logged-in": boolean,
+  recipes: savedRecipe[]
 }
 
+// Define a type alias with exact data structure for each recipe object
 type savedRecipe = {
   id: number,
   title: string,
   ingredients: string[],
   recipe: string,
-  cookingTime: number
+  cookingTime: number,
+}
+
+type optionsType = {
+  method?: string,
+  headers?: {},
+  body?: string
 }
 
 export default function useFetch(url: string, method: string = "GET") {
   // Define "useState" hook values
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState<infoObject | savedRecipe | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState(null)
-  const [options, setOption] = useState({})
+  const [options, setOption] = useState<optionsType>({})
 
   // Define a function for 'POST' method
   const saveInfo = (info: infoObject | savedRecipe): void => {
@@ -34,29 +43,29 @@ export default function useFetch(url: string, method: string = "GET") {
   }
 
   // Define a function for 'PUT' method
-  // const updateInfo = (info: object): void => {
-  //   setOption({
-  //     method: 'PUT',
-  //     headers: { 'content-type': 'application/json' },
-  //     body: JSON.stringify(info)
-  //   })
-  // }
- 
+  const updateInfo = (info: infoObject | savedRecipe): void => {
+    setOption({
+      method: 'PUT',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(info)
+    })
+  }
+
   useEffect(() => {
-    async function fetchData(url: string, fetchOptions: object = {}) {
+    async function fetchData(url: string, fetchOptions: optionsType = {}) {
       // Show loading message
       setLoading(true)
 
       try {
         // Fetch data
-        const response = await fetch(url, { ...fetchOptions })
+        const response: Response = await fetch(url, { ...fetchOptions })
 
         if (!response.ok) {
           throw new Error(response.statusText)
         }
 
         // Assign received data when response was successful
-        const data = await response.json()
+        const data: infoObject = await response.json()
 
         // Stop showing loading message and also error message for insurance, then add new received data with useState hook 
         setLoading(false)
@@ -83,5 +92,5 @@ export default function useFetch(url: string, method: string = "GET") {
     }
   }, [url, method, options])
 
-  return { data, loading, error, saveInfo }
+  return { data, loading, error, saveInfo, updateInfo }
 }

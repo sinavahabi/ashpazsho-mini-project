@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom"
-
 import "./NotFound.scss"
 import notFountIcon from "../../assets/icons/code-alert.svg"
 
