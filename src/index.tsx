@@ -1,3 +1,9 @@
+/*
+  Program Topic: Ashpazsho Application Website
+  Author: sina vahabi
+  Copyright: 2023/12
+*/
+
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { AuthProvider } from "./context/AuthContext"
@@ -11,7 +17,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLDivEleme
 root.render(
   <React.StrictMode>
     <AuthProvider>
-    <App />
+      <App />
     </AuthProvider>
   </React.StrictMode>
 )

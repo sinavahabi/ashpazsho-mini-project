@@ -1,0 +1,152 @@
+@import "../../main";
+
+main.about-us {
+  direction: ltr;
+
+  a.about-us-link {
+    text-decoration: none;
+    margin-right: 0.2rem;
+  }
+
+  a.about-us-link.active {
+    color: $color-white;
+  }
+
+  #profile {
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+  }
+
+  #profile:hover {
+    cursor: pointer;
+  }
+
+  .header {
+    font-size: 30px;
+    font-weight: 400;
+    color: $color-white;
+    text-decoration: none;
+  }
+
+  a.header:hover {
+    color: $color-blue;
+  }
+
+  li.list-group-item:hover:not(li.active) {
+    color: white;
+    background-color: $color-light-gray;
+    cursor: pointer;
+  }
+
+  li.list-head:hover {
+    cursor: default;
+  }
+
+  .badge {
+    font-family: "Fira Code";
+  }
+
+  .current-pr {
+    float: right;
+    left: 290px;
+  }
+
+  .python {
+    background-color: $color-purple;
+  }
+
+  .paragraph {
+    width: 100%;
+    border: 2px solid $color-black;
+    border-radius: 5px;
+  }
+
+  #head2 {
+    font-size: 23px;
+  }
+
+  #head3 {
+    font-size: 20px;
+  }
+
+  .technology {
+    border-radius: $border-radius;
+  }
+
+  .JS {
+    background-color: $color-alert;
+  }
+
+  .HTML {
+    background-color: $color-error;
+  }
+
+  .CSS {
+    background-color: $color-purple;
+  }
+
+  .TS {
+    background-color: $color-blue;
+  }
+
+  .BOOTSTRAP {
+    background-color: $color-green;
+  }
+
+  .SASS {
+    background-color: $color-pink;
+  }
+
+  #text-header,
+  #text-footer {
+    border-radius: 5px;
+  }
+
+}
+
+// Responsive styles 
+@media screen and (max-width: 1400px) {
+  main.about-us {
+    .current-pr {
+      left: 230px;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  main.about-us {
+    .current-pr {
+      left: 170px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  main.about-us {
+    .current-pr {
+      left: 150px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main.about-us {
+    .current-pr {
+      left: 390px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .carousel {
+    display: flex;
+    order: 1;
+  }
+
+  main.about-us {
+    .current-pr {
+      left: 85px;
+    }
+  }
+}

@@ -4,7 +4,6 @@ import RecipeList from "../../components/RecipeList/RecipeList"
 import useFetch from "../../hooks/useFetch"
 import "./Home.scss"
 
-
 export default function Home() {
   const { data, loading, error } = useFetch("http://localhost:5001/users")
   

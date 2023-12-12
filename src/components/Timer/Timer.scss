@@ -1,0 +1,10 @@
+@import "../../main";
+
+.timer {
+  font-size: $font-sm;
+
+  // Responsive styles
+  @media screen and (max-width: 576px) {
+    font-size: $font-xs;
+  }
+}
