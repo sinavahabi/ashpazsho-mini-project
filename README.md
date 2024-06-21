@@ -10,6 +10,7 @@
     npx create-react-app react-app --template typescript
     
 **Setup TypeScript Config File**
+
 *tsconfig.json*
 
     {
@@ -71,6 +72,7 @@
     npm install react-bootstrap bootstrap
 
 **Setup Bootstrap**
+
 *index.tsx*
 
     import "bootstrap/dist/js/bootstrap"
